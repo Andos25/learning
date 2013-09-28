@@ -16,7 +16,7 @@
 //         console.log(data);
 //     }
 // });
-// console.log("nani");
+// console.log("nani");                    w
 
 //use module
 // var myModule = require('./module');
