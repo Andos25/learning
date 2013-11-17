@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include "mongo/client/dbclient.h"
 using namespace std;
- 
+//test diff 
 void insert( mongo::DBClientConnection & conn , const char * name , int num ) {
     mongo::BSONObjBuilder obj;
     obj.append( "name" , name );
