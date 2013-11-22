@@ -10,7 +10,8 @@ ROOT_UID=0
 #fi
 tar zxvf httpd-2.4.6.tar.gz
 cd httpd-2.4.6
-sudo ./configure --prefix=/usr/local/apache2/ --enable-proxy --enable-ssl --enable-cgi --enable-rewrite --enable-so --enable-module=so
+#sudo ./configure --prefix=/usr/local/apache2/ --enable-proxy --enable-ssl --enable-cgi --enable-rewrite --enable-so --enable-module=so
+sudo ./configure --enable-so --enable-so
 sudo make
 sudo make install
 sudo chmod 777 -R /usr/local/apache2
