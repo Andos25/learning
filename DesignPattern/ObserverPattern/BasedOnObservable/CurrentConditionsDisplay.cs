@@ -4,23 +4,23 @@ using System.Text;
 
 namespace BasedOnObservable
 {
-    class CurrentConditionsDisplay : IObserver<WeatherMetrics>
+    class CurrentConditionsDisplay : ConditionsDisplay
     {
-        private WeatherMetrics weatherMetrics;
-
-        public CurrentConditionsDisplay()
-
-        public void OnCompleted()
+        public CurrentConditionsDisplay(IObservable<WeatherMetrics> provider)
         {
-            throw new NotImplementedException();
+            if (provider != null)
+                provider.Subscribe(this);
         }
 
-        public void OnError(Exception error)
+        public override void print()
         {
-            throw new NotImplementedException();
+            Console.WriteLine(string.Format("Current temp: {0}C, humidity: {1}%, pressure: {2}"
+                , weatherMetrics.temperature
+                , weatherMetrics.humidity
+                , weatherMetrics.pressure));
         }
 
-        public void OnNext(WeatherMetrics value)
+        public override void UpdateMetrics(WeatherMetrics weatherMetrics)
         {
             throw new NotImplementedException();
         }

@@ -7,10 +7,17 @@ namespace BasedOnObservable
     class WeatherData : IObservable<WeatherMetrics>
     {
         private List<IObserver<WeatherMetrics>> Observers;
+        private WeatherMetrics weatherMetrics;
 
-        public WeatherData()
+        public WeatherData(WeatherMetrics weatherMetrics)
         {
             Observers = new List<IObserver<WeatherMetrics>>();
+            this.weatherMetrics = new WeatherMetrics()
+            {
+                temperature = weatherMetrics.temperature,
+                humidity = weatherMetrics.humidity,
+                pressure = weatherMetrics.pressure
+            };
         }
 
         public IDisposable Subscribe(IObserver<WeatherMetrics> observer)
@@ -22,12 +29,21 @@ namespace BasedOnObservable
             return new Unsubscriber(Observers, observer);
         }
 
-        public void NotifyObervers()
+        private void NotifyObervers()
         {
             foreach(var observer in Observers)
             {
-
+                observer.OnNext(this.weatherMetrics);
             }
+        }
+
+        public void UpdateMetrics(WeatherMetrics weatherMetrics)
+        {
+            this.weatherMetrics.temperature = weatherMetrics.temperature;
+            this.weatherMetrics.humidity = weatherMetrics.humidity;
+            this.weatherMetrics.pressure = weatherMetrics.pressure;
+
+            NotifyObervers();
         }
 
         private class Unsubscriber : IDisposable
