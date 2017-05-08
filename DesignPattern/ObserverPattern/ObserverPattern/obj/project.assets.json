@@ -7080,10 +7080,10 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\workspace\\learning\\DesignPattern\\ObserverPattern\\ObserverPattern\\ObserverPattern.csproj",
+      "projectUniqueName": "C:\\Learning\\learning\\DesignPattern\\ObserverPattern\\ObserverPattern\\ObserverPattern.csproj",
       "projectName": "ObserverPattern",
-      "projectPath": "D:\\workspace\\learning\\DesignPattern\\ObserverPattern\\ObserverPattern\\ObserverPattern.csproj",
-      "outputPath": "D:\\workspace\\learning\\DesignPattern\\ObserverPattern\\ObserverPattern\\obj\\",
+      "projectPath": "C:\\Learning\\learning\\DesignPattern\\ObserverPattern\\ObserverPattern\\ObserverPattern.csproj",
+      "outputPath": "C:\\Learning\\learning\\DesignPattern\\ObserverPattern\\ObserverPattern\\obj\\",
       "projectStyle": "PackageReference",
       "originalTargetFrameworks": [
         "netcoreapp1.1"

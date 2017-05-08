@@ -9,6 +9,12 @@ namespace BasedOnObservable
         public WeatherMetrics weatherMetrics;
         public IDisposable unsubscriber;
 
+        public ConditionsDisplay(IObservable<WeatherMetrics> provider)
+        {
+            this.Subscribe(provider);
+            weatherMetrics = new WeatherMetrics();
+        }
+
         public virtual void Subscribe(IObservable<WeatherMetrics> provider)
         {
             if (provider != null)

@@ -29,7 +29,7 @@ namespace BasedOnObservable
             return new Unsubscriber(Observers, observer);
         }
 
-        private void NotifyObervers()
+        public void NotifyObervers()
         {
             foreach(var observer in Observers)
             {
@@ -37,11 +37,11 @@ namespace BasedOnObservable
             }
         }
 
-        public void UpdateMetrics(WeatherMetrics weatherMetrics)
+        public void UpdateMetrics(float temp, float humidity, float pressure)
         {
-            this.weatherMetrics.temperature = weatherMetrics.temperature;
-            this.weatherMetrics.humidity = weatherMetrics.humidity;
-            this.weatherMetrics.pressure = weatherMetrics.pressure;
+            this.weatherMetrics.temperature = temp;
+            this.weatherMetrics.humidity = humidity;
+            this.weatherMetrics.pressure = pressure;
 
             NotifyObervers();
         }

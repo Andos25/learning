@@ -6,10 +6,8 @@ namespace BasedOnObservable
 {
     class CurrentConditionsDisplay : ConditionsDisplay
     {
-        public CurrentConditionsDisplay(IObservable<WeatherMetrics> provider)
+        public CurrentConditionsDisplay(IObservable<WeatherMetrics> provider) : base(provider)
         {
-            if (provider != null)
-                provider.Subscribe(this);
         }
 
         public override void print()
@@ -22,7 +20,9 @@ namespace BasedOnObservable
 
         public override void UpdateMetrics(WeatherMetrics weatherMetrics)
         {
-            throw new NotImplementedException();
+            this.weatherMetrics.temperature = weatherMetrics.temperature;
+            this.weatherMetrics.humidity = weatherMetrics.humidity;
+            this.weatherMetrics.pressure = weatherMetrics.pressure;
         }
     }
 }
