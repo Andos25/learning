@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Autofac.Features.Metadata;
 using System;
 
 namespace IOC
@@ -11,9 +12,23 @@ namespace IOC
         {
             var builder = new ContainerBuilder();
             builder.RegisterType<ConsoleOutput>().As<IOutput>();
-            builder.RegisterType<YesterdayWriter>().As<IDateWriter>();
-            builder.RegisterType<TodayWriter>().As<IDateWriter>();
             
+            builder.RegisterType<TodayWriter>().As<IDateWriter>().WithMetadata("Name", "2");
+            builder.RegisterType<YesterdayWriter>().As<IDateWriter>().WithMetadata("Name", "1");
+            builder.RegisterAdapter<Meta<IDateWriter>, IDateWriter>(
+            cmd =>
+            {
+                var data = (string)cmd.Metadata["Name"];
+                if (data == "1")
+                {
+                    return new TodayWriter(new ConsoleOutput());
+                }
+                else
+                {
+                    return new YesterdayWriter(new ConsoleOutput());
+                }
+            });
+
             Container = builder.Build();
 
             // The WriteDate method is where we'll make use
